@@ -6,15 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Country Selector Demo</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="country-select-with-flag.css">
 </head>
 
 <body>
 
     <!-- Country Selector Container -->
-    <div id="country-selector"></div>
+    <div id="country-selector-wow"></div>
 
     <script src="country-select-with-flag.js"></script>
+
+    <script>
+        new CountrySelector('#country-selector-wow', { defaultCountry: 'BD' });
+
+    </script>
 
 </body>
 
