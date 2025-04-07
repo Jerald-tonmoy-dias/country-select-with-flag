@@ -10,17 +10,13 @@
 </head>
 
 <body>
-
     <!-- Country Selector Container -->
-    <div id="country-selector-wow"></div>
-
+    <div id="cswf_country-selector"></div>
     <script src="country-select-with-flag.js"></script>
-
     <script>
-        new CountrySelector('#country-selector-wow', { defaultCountry: 'BD' });
-
+        const countrySelector = new CountrySelector('#cswf_country-selector');
+        countrySelector.setCountry('BD');
     </script>
-
 </body>
 
 </html>
