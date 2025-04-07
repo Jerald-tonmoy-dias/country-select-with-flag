@@ -1275,12 +1275,14 @@ const countriesData = [
 		"svg": "zw.svg"
 	}
 ];
- class CountrySelector {
+class CountrySelector {
 	constructor(selector, options = {}) {
 		this.element = document.querySelector(selector);
 		this.defaultCountry = options.defaultCountry || 'US';
 		this.flagsBasePath = options.flagsPath || './flags/';
+		this.onChange = options.onChange || null;
 		this.countries = [];
+		this.selectedCountry = null;
 		this.init();
 	}
 
@@ -1396,11 +1398,21 @@ const countriesData = [
 		});
 	}
 
+	getSelectedCountry() {
+		return this.selectedCountry;
+	}
+
 	setCountry(code) {
-		const selectedCountry = this.countries.find(c => c.code === code.toUpperCase());
-		if (selectedCountry) {
-			this.element.querySelector('.cswf_flag').src = selectedCountry.flag;
-			this.element.querySelector('.cswf_country-code').textContent = selectedCountry.code;
+		const selected = this.countries.find(c => c.code === code.toUpperCase());
+		if (selected) {
+			this.selectedCountry = selected;
+			this.element.querySelector('.cswf_flag').src = selected.flag;
+			this.element.querySelector('.cswf_country-code').textContent = selected.code;
+
+			// ✅ Trigger callback if provided
+			if (typeof this.onChange === 'function') {
+				this.onChange(selected);
+			}
 		}
 	}
 }

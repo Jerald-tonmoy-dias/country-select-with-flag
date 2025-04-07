@@ -13,9 +13,20 @@
     <!-- Country Selector Container -->
     <div id="cswf_country-selector"></div>
     <script src="country-select-with-flag.js"></script>
+
     <script>
-        const countrySelector = new CountrySelector('#cswf_country-selector');
-        countrySelector.setCountry('BD');
+        const countrySelector = new CountrySelector('#cswf_country-selector', {
+            defaultCountry: 'DK',
+            flagsPath: './flags/',
+            onChange: (selectedCountry) => {
+                console.log('Selected country:', selectedCountry);
+                // You can now run any AJAX or custom logic here
+            
+            }
+        });
+        // Later in your app, you can access it like this:
+        // const selected = countrySelector.getSelectedCountry();
+        // console.log('Currently selected:', selected);
     </script>
 </body>
 
